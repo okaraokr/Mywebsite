@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>おから - 自己紹介</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      ::selection { background: #ffedd5; }
+      .hobby-img:hover img { transform: scale(1.05); }
+      .icon-area:hover .icon-face { transform: scale(1.1); }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-white font-sans text-slate-800">
+
+      <!-- ヒーローセクション -->
+      <header class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-white px-6 text-center">
+        <div id="hero" class="relative z-10 transition-all duration-1000 transform translate-y-10 opacity-0">
+          <div class="mb-8 inline-block relative">
+            <div class="icon-area w-28 h-28 md:w-36 md:h-36 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 shadow-sm overflow-hidden">
+              <i data-lucide="smile" class="icon-face text-slate-700 transition-transform duration-500" style="width:50px;height:50px;"></i>
+            </div>
+            <div class="absolute -bottom-1 -right-1 w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-lg border-4 border-white">
+              <i data-lucide="zap" style="width:16px;height:16px;"></i>
+            </div>
+          </div>
+
+          <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tight text-slate-900">
+            おから<span class="text-orange-500">です</span>
+          </h1>
+
+          <p class="text-lg md:text-xl font-bold text-slate-400 uppercase tracking-widest">
+            東京都市大学
+          </p>
+        </div>
+      </header>
+
+      <main class="max-w-6xl mx-auto px-6 py-20 space-y-40">
+
+        <!-- 自己紹介セクション -->
+        <section class="max-w-3xl mx-auto text-center space-y-8">
+          <div class="space-y-6 text-xl md:text-2xl text-slate-600 leading-relaxed font-medium">
+            <p>東京都市大学デザインデータ科学部</p>
+            <p>バレーボールが大好きで35名ほどのインカレサークルを運営しています！</p>
+            <p>人と関わることがとても好きなかまちょです。</p>
+          </div>
+        </section>
+
+        <!-- 趣味・特技セクション -->
+        <section class="space-y-24">
+          <div class="text-center space-y-2 mb-16">
+            <h3 class="text-3xl font-black text-slate-900 tracking-tighter">趣味・特技</h3>
+          </div>
+
+          <div class="space-y-32" id="hobbies"></div>
+        </section>
+      </main>
+
+      <!-- フッター -->
+      <footer class="py-20 text-center border-t border-slate-50 bg-[#fafafa]">
+        <div class="flex justify-center gap-8 mb-10 text-slate-200">
+          <i data-lucide="car" style="width:20px;height:20px;"></i>
+          <i data-lucide="dribbble" style="width:20px;height:20px;"></i>
+          <i data-lucide="camera" style="width:20px;height:20px;"></i>
+          <i data-lucide="globe" style="width:20px;height:20px;"></i>
+        </div>
+        <div class="space-y-4">
+          <h2 class="text-4xl font-black text-slate-900 tracking-tighter italic">OKARA<span class="text-orange-500">.</span></h2>
+          <p class="text-[10px] text-slate-400 font-black uppercase tracking-[0.5em]">Introduction Website 2024</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const hobbies = [
+        {
+          title: "ドライブ",
+          enTitle: "Drive",
+          icon: "moon",
+          accent: "bg-slate-800",
+          desc: "予定がないときは深夜に車を走らせて、豊洲や横浜、江ノ島などの海岸沿いまでゆっくりと景色を眺めに行きます。",
+          image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+          title: "バレーボール",
+          enTitle: "Volleyball",
+          icon: "crown",
+          accent: "bg-orange-600",
+          desc: "高校から始めたバレーボールを今でも続けています。現在はサークル長として、様々な大学のメンバーと毎週活動を行っています。",
+          image: "shutterstock_1919107691.jpg"
+        },
+        {
+          title: "写真",
+          enTitle: "Photography",
+          icon: "camera",
+          accent: "bg-amber-500",
+          desc: "友人との日常や、ドライブ先で見つけた穴場の絶景、花や建物などを写真に収めて思い出として残すことが好きです。",
+          image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800"
+        },
+        {
+          title: "海外での経験",
+          enTitle: "Global Experience",
+          icon: "globe",
+          accent: "bg-blue-600",
+          desc: "アメリカでの8年間の生活が自分の原点です。多様な価値観に触れた経験を活かし、どんな環境でも自分らしく接することを大切にしています。",
+          image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=800"
+        }
+      ];
+
+      const fallbackImage = "https://images.unsplash.com/photo-1547347693-190138981452?auto=format&fit=crop&q=80&w=800";
+
+      const container = document.getElementById("hobbies");
+      hobbies.forEach((hobby, index) => {
+        const reversed = index % 2 === 1;
+        const div = document.createElement("div");
+        div.className = `flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-8 md:gap-16 group`;
+        div.innerHTML = `
+          <div class="w-full md:w-1/2">
+            <div class="hobby-img aspect-[16/10] overflow-hidden rounded-3xl bg-slate-100 shadow-sm relative border border-slate-100">
+              <img
+                src="${hobby.image}"
+                alt="${hobby.title}"
+                class="w-full h-full object-cover transition-transform duration-700"
+                onerror="this.src='${fallbackImage}'"
+              />
+              <div class="absolute top-6 left-6 w-12 h-12 rounded-xl text-white ${hobby.accent} flex items-center justify-center shadow-lg z-10">
+                <i data-lucide="${hobby.icon}" style="width:24px;height:24px;"></i>
+              </div>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 space-y-4 px-2">
+            <div class="flex items-baseline gap-3">
+              <h4 class="text-3xl font-black text-slate-900">${hobby.title}</h4>
+              <span class="text-sm font-bold text-slate-300 uppercase tracking-widest">${hobby.enTitle}</span>
+            </div>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed">${hobby.desc}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      lucide.createIcons();
+
+      requestAnimationFrame(() => {
+        const hero = document.getElementById("hero");
+        hero.classList.remove("translate-y-10", "opacity-0");
+        hero.classList.add("translate-y-0", "opacity-100");
+      });
+    </script>
+  </body>
+</html>
